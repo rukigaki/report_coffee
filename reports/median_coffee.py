@@ -15,7 +15,7 @@ class MedianCoffee(Report):
     def transform_data(self):
         data = {row["student"]: [] for row in self.raw_data}  # Тернарный оператор создает разные ссылки на []
         for row in self.raw_data:
-            data[row["student"]].append(row["coffee_spent"])
+            data[row["student"]].append(int(row["coffee_spent"]))
 
         median_data = zip(data, map(statistics.median, data.values()))
         sorted_data = sorted(median_data, key=lambda x: x[1], reverse=True)
